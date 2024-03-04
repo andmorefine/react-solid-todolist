@@ -1,4 +1,6 @@
-function App() {
+import React from 'react'
+
+const App = () => {
   return (
     <div className="h-screen">
       <div className="max-w-4xl mx-auto py-20 px-6">
