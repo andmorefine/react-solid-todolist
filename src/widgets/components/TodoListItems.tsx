@@ -1,17 +1,16 @@
 import React from 'react'
+import { TodoListItemsProps } from '../../widgets'
 
 export const TodoListItems = ({
   todos,
   deleteTodoHandler,
   toggleTodoCompletedHandler,
   customListItemProvider,
-}) => {
+}: TodoListItemsProps) => {
   return (
-    <div
-      className={'mt-4 min-h-[48px] max-h-[240px] h-full overflow-y-auto px-2'}
-    >
+    <div className={'mt-4 min-h-[48px] h-full px-2'}>
       {todos.length === 0 && (
-        <p className={'text-center'}>Aucune tâche à afficher</p>
+        <p className={'text-center'}>表示するタスクがありません</p>
       )}
       {todos.length > 0 && (
         <ul>

@@ -1,11 +1,11 @@
 import { nanoid } from 'nanoid'
+import { Todo } from '../../widgets/'
 
-const data = [
-  { id: nanoid(8), title: 'Todo 1', completed: false },
-  { id: nanoid(8), title: 'Todo 2', completed: false },
-  { id: nanoid(8), title: 'Todo 3', completed: false },
-  { id: nanoid(8), title: 'Todo 4', completed: false },
-  { id: nanoid(8), title: 'Todo 5', completed: false },
-]
+const createTodo = (index: number): Todo => ({
+  id: nanoid(8),
+  title: `タスク ${index + 1}`,
+  completed: false,
+})
 
-export const getData = () => data
+export const getData = (): Todo[] =>
+  Array.from({ length: 5 }, (_, index) => createTodo(index))

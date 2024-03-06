@@ -2,33 +2,32 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { TodoListAddForm } from './components/TodoAddForm'
 import { TodoListItems } from './components/TodoListItems'
+import { Todo, TodoListWidgetProps } from '../widgets'
 
 export const TodoListWidget = ({
   title,
   fetchCallback,
   todoFactory,
   customListItemProvider,
-}) => {
-  const [todos, setTodos] = useState(null)
+}: TodoListWidgetProps) => {
+  const [todos, setTodos] = useState<Todo[]>([])
 
-  const fetchTodos = async (signal) => {
+  const fetchTodos = async (signal: AbortSignal) => {
     try {
       return await fetchCallback(signal)
-    } catch (error) {
-      if (error.name !== 'AbortError') {
-        throw new Error(error)
-      }
+    } catch (error: any) {
+      throw new Error(error.message)
     }
   }
 
-  const handleAddTodo = (newTodo) => {
+  const handleAddTodo = (newTodo: Todo) => {
     setTodos([...todos, newTodo])
   }
-  const handleDeleteTodo = (id) => {
+  const handleDeleteTodo = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
-  const handleToggleCompleted = (id) => {
+  const handleToggleCompleted = (id: string) => {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
@@ -67,10 +66,10 @@ export const TodoListWidget = ({
         todoFactory={todoFactory}
       />
       <hr />
-      {todos === null && (
-        <h2 className={'text-center mt-4 text-2xl'}>🌀 Chargement...</h2>
+      {todos.length === 0 && (
+        <h2 className={'text-center mt-4 text-2xl'}>🌀 読み込み中...</h2>
       )}
-      {todos && (
+      {todos.length > 0 && (
         <TodoListItems
           todos={todos}
           deleteTodoHandler={handleDeleteTodo}

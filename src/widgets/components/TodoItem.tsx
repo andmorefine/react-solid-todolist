@@ -1,6 +1,17 @@
 import React from 'react'
+import {
+  Todo,
+  DeleteTodoHandler,
+  toggleTodoCompletedHandler,
+} from '../../widgets'
 
-export const TodoItem = ({
+interface TodoItemProps {
+  item: Todo
+  deleteTodoHandler: DeleteTodoHandler
+  toggleTodoCompletedHandler: toggleTodoCompletedHandler
+}
+
+export const TodoItem: React.FC<TodoItemProps> = ({
   item,
   deleteTodoHandler,
   toggleTodoCompletedHandler,

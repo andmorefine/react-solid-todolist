@@ -1,8 +1,8 @@
 import React from 'react'
-
 import { TodoItem } from '../components/TodoItem'
+import { CustomListItemProvider } from '../../widgets'
 
-export const todoItemSimpleProvider = (
+export const customListItemProvider: CustomListItemProvider = (
   todo,
   deleteTodoHandler,
   toggleTodoCompletedHandler

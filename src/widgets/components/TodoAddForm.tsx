@@ -1,28 +1,37 @@
 import React from 'react'
 import { useState } from 'react'
+import { AddTodoHandler, TodoFactory } from '../../widgets'
+interface TodoListAddFormProps {
+  addTodoHandler: AddTodoHandler
+  todoFactory: TodoFactory
+}
 
-export const TodoListAddForm = ({ addTodoHandler, todoFactory }) => {
+export const TodoListAddForm = ({
+  addTodoHandler,
+  todoFactory,
+}: TodoListAddFormProps) => {
   const [hasError, setHasError] = useState(false)
 
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value.trim()
     if (hasError && newTitle !== '') setHasError(false)
   }
 
-  const handleAddTodo = (e) => {
+  const handleAddTodo = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const form = e.target
     const formData = new FormData(form)
-    const newTodoTitle = formData.get('new-todo-item').trim()
+    const newTodoTitle = formData.get('new-todo-item')
+    const title = newTodoTitle !== null ? newTodoTitle.toString().trim() : ''
 
-    if (newTodoTitle === '') {
+    if (title === '') {
       setHasError(true)
       return
     }
     setHasError(false)
 
-    const newTodo = todoFactory(newTodoTitle)
+    const newTodo = todoFactory(title)
 
     addTodoHandler(newTodo)
 
@@ -31,9 +40,11 @@ export const TodoListAddForm = ({ addTodoHandler, todoFactory }) => {
 
   return (
     <form className={'mt-4'} onSubmit={handleAddTodo}>
-      <label htmlFor="new-todo-item">Add Todo</label>
+      <label htmlFor="new-todo-item">追加タスク</label>
       {hasError && (
-        <p className={'text-red-500 text-sm'}>Please enter a todo title</p>
+        <p className={'text-red-500 text-sm'}>
+          タスクのタイトルを入力してください
+        </p>
       )}
       <div className={'flex items-center gap-1 mb-4'}>
         <input
@@ -52,7 +63,7 @@ export const TodoListAddForm = ({ addTodoHandler, todoFactory }) => {
             'mt-1 py-3 px-2 bg-gray-950 text-zinc-200 rounded min-w-[115px] hover:bg-slate-600 transition-colors duration-300 ease-in-out'
           }
         >
-          Add
+          追加
         </button>
       </div>
     </form>
