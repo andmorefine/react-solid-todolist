@@ -1,8 +1,11 @@
 import React from 'react'
 import { TodoListWidget } from './widgets/TodoListWidget'
-import { customListItemProvider } from './widgets/providers/customListItemProvider'
 import { getData } from './widgets/data/todoListData'
+import { getData as getDataExt } from './widgets/data/todoListDataExt'
 import { todoSimpleFactory } from './widgets/factories/todoSimpleFactory'
+import { todoExtFactory } from './widgets/factories/todoExtFactory'
+import { customListItemProvider } from './widgets/providers/customListItemProvider'
+import { todoItemExtProvider } from './widgets/providers/todoItemExtProvider'
 
 const App = () => {
   return (
@@ -16,6 +19,12 @@ const App = () => {
           fetchCallback={getData}
           todoFactory={todoSimpleFactory}
           customListItemProvider={customListItemProvider}
+        />
+        <TodoListWidget
+          title="Extended"
+          fetchCallback={getDataExt}
+          todoFactory={todoExtFactory}
+          customListItemProvider={todoItemExtProvider}
         />
       </div>
     </div>

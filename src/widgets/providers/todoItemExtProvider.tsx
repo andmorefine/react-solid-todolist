@@ -1,14 +1,14 @@
 import React from 'react'
-import { TodoItem } from '../components/TodoItem'
-import { Todo, CustomListItemProvider } from '../../widgets'
+import { TodoItemExt } from '../components/TodoItemExt'
+import { TodoExt, CustomListItemProvider } from '../../widgets'
 
-export const customListItemProvider: CustomListItemProvider<Todo> = (
+export const todoItemExtProvider: CustomListItemProvider<TodoExt> = (
   todo,
   deleteTodoHandler,
   toggleTodoCompletedHandler
 ) => {
   return (
-    <TodoItem
+    <TodoItemExt
       item={todo}
       deleteTodoHandler={deleteTodoHandler}
       toggleTodoCompletedHandler={toggleTodoCompletedHandler}

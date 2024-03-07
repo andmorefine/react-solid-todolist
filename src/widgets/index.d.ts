@@ -4,9 +4,13 @@ export interface Todo {
   completed: boolean
 }
 
-export interface CustomListItemProvider {
+export interface TodoExt extends Todo {
+  dueDate: string
+}
+
+export interface CustomListItemProvider<T> {
   (
-    todo: Todo,
+    todo: T,
     deleteTodoHandler: DeleteTodoHandler,
     toggleTodoCompletedHandler: ToggleTodoCompletedHandler
   ): ReactNode
