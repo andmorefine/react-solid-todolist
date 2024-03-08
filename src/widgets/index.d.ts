@@ -11,7 +11,7 @@ export interface TodoApi extends Omit<Todo, 'title'> {
   todo: string
 }
 
-export interface TodoListAddFormProps<T = Todo> {
+export interface TodoListAddFormProps<T> {
   addTodoHandler: AddTodoHandler
   todoFactory: TodoFactory<T>
 }
@@ -25,15 +25,15 @@ export interface CustomListItemProvider<T> {
 }
 
 export interface TodoListItemsProps {
-  todos: Todo[]
+  todos: (Todo | TodoApi)[]
   deleteTodoHandler: DeleteTodoHandler
   toggleTodoCompletedHandler: toggleTodoCompletedHandler
   customListItemProvider: CustomListItemProvider
 }
 
-export interface TodoListWidgetProps<T = Todo> {
+export interface TodoListWidgetProps<T, U> {
   title: string
-  fetchCallback: FetchCallback
+  fetchCallback: FetchCallback<U>
   todoFactory: TodoFactory<T>
   customListItemProvider: CustomListItemProvider
 }
@@ -42,8 +42,8 @@ export type DeleteTodoHandler = (id: string) => void
 
 export type toggleTodoCompletedHandler = (id: string) => void
 
-export type FetchCallback = (signal: AbortSignal) => Todo[]
+export type FetchCallback<U> = (signal: AbortSignal) => U
 
-export type TodoFactory<T> = (title: string) => T
+export type TodoFactory<T extends Todo | TodoApi = Todo> = (title: string) => T
 
-export type AddTodoHandler = (newTodo: Todo) => void
+export type AddTodoHandler = (newTodo: Todo | TodoApi) => void

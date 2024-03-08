@@ -1,15 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
-import { AddTodoHandler, TodoFactory } from '../../widgets'
-interface TodoListAddFormProps {
-  addTodoHandler: AddTodoHandler
-  todoFactory: TodoFactory
-}
+import { Todo, TodoApi, TodoListAddFormProps } from '../../widgets'
 
-export const TodoListAddForm = ({
+export const TodoListAddForm = <T extends Todo | TodoApi = Todo>({
   addTodoHandler,
   todoFactory,
-}: TodoListAddFormProps) => {
+}: TodoListAddFormProps<T>) => {
   const [hasError, setHasError] = useState(false)
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

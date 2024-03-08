@@ -1,4 +1,5 @@
 import React from 'react'
+import { TodoApi } from './widgets'
 import { TodoListWidget } from './widgets/TodoListWidget'
 import { getData } from './widgets/data/todoListData'
 import { getData as getDataExt } from './widgets/data/todoListDataExt'
@@ -29,7 +30,7 @@ const App = () => {
           todoFactory={todoExtFactory}
           customListItemProvider={todoItemExtProvider}
         />
-        <TodoListWidget
+        <TodoListWidget<TodoApi, Promise<TodoApi[]>>
           title="API"
           fetchCallback={getDataFromApi}
           todoFactory={todoApiFactory}
