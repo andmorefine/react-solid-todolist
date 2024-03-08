@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoApi } from '@widgets/type'
+import { TodoExt, TodoApi } from '@widgets/type'
 import { TodoListWidget } from '@widgets/TodoListWidget'
 import { getData } from '@widgets/data/todoListData'
 import { getData as getDataExt } from '@widgets/data/todoListDataExt'
@@ -24,7 +24,7 @@ const App = () => {
           todoFactory={todoSimpleFactory}
           customListItemProvider={customListItemProvider}
         />
-        <TodoListWidget
+        <TodoListWidget<TodoExt>
           title="拡張"
           fetchCallback={getDataExt}
           todoFactory={todoExtFactory}
