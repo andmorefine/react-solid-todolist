@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { TodoExt } from '../../widgets/'
+import { TodoExt } from '@widgets/type'
 
 const getRandomDate = (startDate: Date, endDate: Date): string => {
   const start = startDate.getTime()

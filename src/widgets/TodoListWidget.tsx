@@ -1,19 +1,19 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { TodoListAddForm } from './components/TodoAddForm'
-import { TodoListItems } from './components/TodoListItems'
-import { Todo, TodoApi, TodoListWidgetProps } from '../widgets'
+import { TodoListAddForm } from '@widgets/components/TodoAddForm'
+import { TodoListItems } from '@widgets/components/TodoListItems'
+import { Todo, TodoExt, TodoApi, TodoListWidgetProps } from '@widgets/type'
 
 export const TodoListWidget = <
-  T extends Todo | TodoApi = Todo,
-  U extends Todo[] | Promise<TodoApi[]> = Todo[]
+  T extends Todo | TodoExt | TodoApi = Todo,
+  U extends Todo[] | TodoExt[] | Promise<TodoApi[]> = Todo[]
 >({
   title,
   fetchCallback,
   todoFactory,
   customListItemProvider,
 }: TodoListWidgetProps<T, U>) => {
-  const [todos, setTodos] = useState<(Todo | TodoApi)[]>([])
+  const [todos, setTodos] = useState<(Todo | TodoExt | TodoApi)[]>([])
 
   const fetchTodos = async (signal: AbortSignal) => {
     try {
@@ -23,7 +23,7 @@ export const TodoListWidget = <
     }
   }
 
-  const handleAddTodo = (newTodo: Todo | TodoApi) => {
+  const handleAddTodo = (newTodo: Todo | TodoExt | TodoApi) => {
     setTodos([...todos, newTodo])
   }
   const handleDeleteTodo = (id: string) => {
@@ -45,7 +45,7 @@ export const TodoListWidget = <
     const abortController = new AbortController()
     fetchTodos(abortController.signal)
       .then((data) => {
-        const todo = data as (Todo | TodoApi)[]
+        const todo = data as (Todo | TodoExt | TodoApi)[]
         setTodos(todo)
       })
       .catch((error) => {

@@ -1,6 +1,6 @@
 const limit = 5
 const url = `https://dummyjson.com/todos?limit=${limit}`
-import { TodoApi } from '../../widgets/'
+import { TodoApi } from '@widgets/type'
 
 export const getData = async (signal: AbortSignal): Promise<TodoApi[]> => {
   const response = await fetch(url, { signal })
@@ -9,6 +9,5 @@ export const getData = async (signal: AbortSignal): Promise<TodoApi[]> => {
   }
   const jsonData = await response.json()
 
-  console.log(jsonData)
   return [...jsonData.todos]
 }

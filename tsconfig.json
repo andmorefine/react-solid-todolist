@@ -8,7 +8,10 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "baseUrl": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@widgets/*": ["src/widgets/*"]
+    },
     "outDir": "dist",
     "noImplicitReturns": true,
     "noUnusedLocals": true,

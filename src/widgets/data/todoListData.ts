@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { Todo } from '../../widgets/'
+import { Todo } from '@widgets/type'
 
 const createTodo = (index: number): Todo => ({
   id: nanoid(8),

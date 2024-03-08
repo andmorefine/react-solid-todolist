@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import { Todo, TodoApi, TodoListAddFormProps } from '../../widgets'
+import { Todo, TodoExt, TodoApi, TodoListAddFormProps } from '@widgets/type'
 
-export const TodoListAddForm = <T extends Todo | TodoApi = Todo>({
+export const TodoListAddForm = <T extends Todo | TodoExt | TodoApi = Todo>({
   addTodoHandler,
   todoFactory,
 }: TodoListAddFormProps<T>) => {

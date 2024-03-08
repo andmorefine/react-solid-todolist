@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoListItemsProps } from '../../widgets'
+import { TodoListItemsProps } from '@widgets/type'
 
 export const TodoListItems = ({
   todos,
