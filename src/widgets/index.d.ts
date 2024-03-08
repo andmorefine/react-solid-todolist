@@ -7,6 +7,14 @@ export interface Todo {
 export interface TodoExt extends Todo {
   dueDate: string
 }
+export interface TodoApi extends Omit<Todo, 'title'> {
+  todo: string
+}
+
+export interface TodoListAddFormProps<T = Todo> {
+  addTodoHandler: AddTodoHandler
+  todoFactory: TodoFactory<T>
+}
 
 export interface CustomListItemProvider<T> {
   (
@@ -23,10 +31,10 @@ export interface TodoListItemsProps {
   customListItemProvider: CustomListItemProvider
 }
 
-export interface TodoListWidgetProps {
+export interface TodoListWidgetProps<T = Todo> {
   title: string
   fetchCallback: FetchCallback
-  todoFactory: TodoFactory
+  todoFactory: TodoFactory<T>
   customListItemProvider: CustomListItemProvider
 }
 
@@ -36,6 +44,6 @@ export type toggleTodoCompletedHandler = (id: string) => void
 
 export type FetchCallback = (signal: AbortSignal) => Todo[]
 
-export type TodoFactory = (title: string) => Todo
+export type TodoFactory<T> = (title: string) => T
 
 export type AddTodoHandler = (newTodo: Todo) => void

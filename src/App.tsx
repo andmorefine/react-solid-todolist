@@ -2,10 +2,13 @@ import React from 'react'
 import { TodoListWidget } from './widgets/TodoListWidget'
 import { getData } from './widgets/data/todoListData'
 import { getData as getDataExt } from './widgets/data/todoListDataExt'
+import { getData as getDataFromApi } from './widgets/data/todoDummyJsonData'
 import { todoSimpleFactory } from './widgets/factories/todoSimpleFactory'
 import { todoExtFactory } from './widgets/factories/todoExtFactory'
+import { todoApiFactory } from './widgets/factories/todoApiFactory'
 import { customListItemProvider } from './widgets/providers/customListItemProvider'
 import { todoItemExtProvider } from './widgets/providers/todoItemExtProvider'
+import { todoApiItemProvider } from './widgets/providers/todoApiItemProvider'
 
 const App = () => {
   return (
@@ -15,16 +18,22 @@ const App = () => {
           Reactを用いたSOLID原則に基づいたTODOリスト
         </h1>
         <TodoListWidget
-          title="Simple"
+          title="SIMPLE"
           fetchCallback={getData}
           todoFactory={todoSimpleFactory}
           customListItemProvider={customListItemProvider}
         />
         <TodoListWidget
-          title="Extended"
+          title="EXTEND"
           fetchCallback={getDataExt}
           todoFactory={todoExtFactory}
           customListItemProvider={todoItemExtProvider}
+        />
+        <TodoListWidget
+          title="API"
+          fetchCallback={getDataFromApi}
+          todoFactory={todoApiFactory}
+          customListItemProvider={todoApiItemProvider}
         />
       </div>
     </div>
