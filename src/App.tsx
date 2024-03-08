@@ -19,13 +19,13 @@ const App = () => {
           Reactを用いたSOLID原則に基づいたTODOリスト
         </h1>
         <TodoListWidget
-          title="SIMPLE"
+          title="簡単"
           fetchCallback={getData}
           todoFactory={todoSimpleFactory}
           customListItemProvider={customListItemProvider}
         />
         <TodoListWidget
-          title="EXTEND"
+          title="拡張"
           fetchCallback={getDataExt}
           todoFactory={todoExtFactory}
           customListItemProvider={todoItemExtProvider}
