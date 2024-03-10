@@ -22,13 +22,11 @@ export interface TodoListAddFormProps<T> {
   todoFactory: TodoFactory<T>
 }
 
-export interface CustomListItemProvider<T> {
-  (
-    todo: T,
-    deleteTodoHandler: DeleteTodoHandler,
-    toggleTodoCompletedHandler: ToggleTodoCompletedHandler
-  ): React.JSX.Element
-}
+export type CustomListItemProvider<T> = (
+  todo: T,
+  deleteTodoHandler: DeleteTodoHandler,
+  toggleTodoCompletedHandler: ToggleTodoCompletedHandler
+) => React.JSX.Element
 
 export interface TodoListItemsProps {
   todos: (Todo | TodoExt | TodoApi)[]

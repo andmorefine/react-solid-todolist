@@ -1,13 +1,12 @@
 {
-  "name": "react-solid-todolist",
+  "name": "react-typescript-solid-principle",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -15,8 +14,11 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.11.25",
     "@types/react": "^18.2.62",
     "@types/react-dom": "^18.2.19",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.0",
@@ -28,6 +30,7 @@
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
+    "typescript-eslint": "^7.1.1",
     "vite": "^5.1.5",
     "vite-tsconfig-paths": "^4.3.1"
   }

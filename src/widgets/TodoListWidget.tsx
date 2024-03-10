@@ -1,5 +1,4 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TodoListAddForm } from '@widgets/components/TodoAddForm'
 import { TodoListItems } from '@widgets/components/TodoListItems'
 import { Todo, TodoExt, TodoApi, TodoListWidgetProps } from '@widgets/type'
